@@ -1,4 +1,4 @@
-name := "monitrestfulinterface"
+name := "sigarrestfulinterface"
 
 scalaVersion := "2.11.2"
 
