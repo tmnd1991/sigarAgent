@@ -4,7 +4,7 @@ import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
 import org.eclipse.jetty.webapp.WebAppContext
 import org.scalatra.servlet.ScalatraListener
 
-object JettyLauncher {
+object Launcher {
   // this is my entry object as specified in sbt project definition
   def main(args: Array[String]) {
     val defaultPort = 9875
@@ -23,9 +23,7 @@ object JettyLauncher {
     context.setResourceBase("src/main/webapp")
     context.addEventListener(new ScalatraListener)
     context.addServlet(classOf[DefaultServlet], "/")
-
     server.setHandler(context)
-
     server.start
     server.join
   }

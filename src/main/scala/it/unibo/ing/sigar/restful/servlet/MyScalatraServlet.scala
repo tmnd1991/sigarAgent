@@ -6,6 +6,6 @@ import spray.json._
 
 class MyScalatraServlet extends SigarRestfulInterfaceStack {
   get("/") {
-    SigarObject.meteredData.toJson.toString()
+    SigarObject.meteredData.toJson.compactPrint
   }
 }

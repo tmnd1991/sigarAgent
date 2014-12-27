@@ -3,7 +3,8 @@ package it.unibo.ing.sigar.restful.model
 import spray.json.DefaultJsonProtocol
 
 /**
- * Created by tmnd on 28/10/14.
+ * @author Antonio Murgia
+ * @version 28/10/14.
  */
 case class SigarMeteredData(cpuPercent : Double,
                             freeMemPercent : Double,
@@ -13,8 +14,12 @@ case class SigarMeteredData(cpuPercent : Double,
                             diskWriteBytes : Long,
                             netInBytes : Long,
                             netOutBytes : Long,
-                            processes : Long)
+                            processes : Long,
+                            uptime : Double,
+                            numberOfCores : Int,
+                            osName : String,
+                             cpuName : String)
 
 object SigarMeteredDataFormat extends DefaultJsonProtocol{
-  implicit val SigarMeteredDataJsonFormat = jsonFormat9(SigarMeteredData)
+  implicit val SigarMeteredDataJsonFormat = jsonFormat13(SigarMeteredData)
 }

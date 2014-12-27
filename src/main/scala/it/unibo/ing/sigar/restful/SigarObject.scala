@@ -4,7 +4,8 @@ import it.unibo.ing.sigar.restful.model.SigarMeteredData
 import org.hyperic.sigar.{FileSystem, Sigar}
 
 /**
- * Created by tmnd on 28/10/14.
+ * @author  Antonio Murgia
+ * @version 28/10/14.
  */
 object SigarObject {
   private lazy val mySigar = new Sigar()
@@ -29,12 +30,19 @@ object SigarObject {
   }
   def processes = {
     mySigar.getProcList.size
+
     //mySigar.getThreadCpu.getTotal
   }
   def freeMemPercent = mySigar.getMem.getFreePercent
   def cpuPercent = mySigar.getCpuPerc.getCombined
+  def uptime = mySigar.getUptime.getUptime
+  def coreNumber = mySigar.getCpuList.length
+  def osName = System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + System.getProperty("os.arch")
+  val cpuInfo = mySigar.getCpuInfoList.iterator.next()
+  def cpuName = cpuInfo.getVendor + " " + cpuInfo.getModel + " @ " + cpuInfo.getMhz + "Mhz"
   def meteredData = {
     lazy val r = diskInfo
-    SigarMeteredData(cpuPercent, freeMemPercent, r._1, r._2, r._3, r._4, rxBytes,txBytes, processes)
+    SigarMeteredData(cpuPercent, freeMemPercent, r._1, r._2, r._3, r._4,rxBytes, txBytes, processes, uptime, coreNumber, osName, cpuName)
+
   }
 }
