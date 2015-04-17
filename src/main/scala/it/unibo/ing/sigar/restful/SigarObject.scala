@@ -8,8 +8,8 @@ import org.hyperic.sigar.{FileSystem, Sigar}
  * @version 28/10/14.
  */
 object SigarObject {
-  private lazy val mySigar = new Sigar()
-  private lazy val fileSystems = mySigar.getFileSystemList.filter(fs =>
+  private val mySigar = new Sigar()
+  private val fileSystems = mySigar.getFileSystemList.filter(fs =>
     ((fs.getType != FileSystem.TYPE_UNKNOWN) && (fs.getType != FileSystem.TYPE_NONE))
   )
   def rxBytes = mySigar.getNetStat.getAllOutboundTotal
@@ -41,7 +41,7 @@ object SigarObject {
   val cpuInfo = mySigar.getCpuInfoList.iterator.next()
   def cpuName = cpuInfo.getVendor + " " + cpuInfo.getModel + " @ " + cpuInfo.getMhz + "Mhz"
   def meteredData = {
-    lazy val r = diskInfo
+    val r = diskInfo
     SigarMeteredData(cpuPercent, freeMemPercent, r._1, r._2, r._3, r._4,rxBytes, txBytes, processes, uptime, coreNumber, osName, cpuName)
 
   }
