@@ -22,15 +22,15 @@ class MainServlet extends SigarrestfulinterfaceStack {
       val newData = SigarObject.meteredData
       import DefaultJsonProtocol._
       RecentBuffer(realDate) = newData
-      newData.toJson.compactPrint
+      Ok(newData.toJson.compactPrint)
     }
     else{
       import DefaultJsonProtocol._
       if (RecentBuffer contains realDate){
-        RecentBuffer(realDate).toJson.compactPrint
+        Ok(RecentBuffer(realDate).toJson.compactPrint)
       }
       else
-        JsObject("error"->JsString("cannot retrieve monit data")).compactPrint
+        InternalServerError(JsObject("error"->JsString("cannot retrieve monit data")).compactPrint)
     }
   }
 }
