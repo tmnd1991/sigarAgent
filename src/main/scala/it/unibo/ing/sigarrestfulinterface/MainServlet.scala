@@ -3,10 +3,6 @@ package it.unibo.ing.sigarrestfulinterface
 import java.net.URLClassLoader
 import java.util.Date
 
-import it.unibo.ing.smacs.monit.gatherer.DataGatherer
-import it.unibo.ing.smacs.monit.gatherer.RecentBuffer
-import it.unibo.ing.smacs.monit.gatherer.RecentBuffer
-import it.unibo.ing.smacs.monit.model.MonitInfo
 import org.scalatra._
 import scalate.ScalateSupport
 import spray.json._
