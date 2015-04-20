@@ -4,6 +4,7 @@ import java.net.URLClassLoader
 import java.util.Date
 
 import it.unibo.ing.sigar.restful.model.SigarMeteredData
+import it.unibo.ing.smacs.monit.gatherer.RecentBuffer
 import org.scalatra._
 import scalate.ScalateSupport
 import spray.json._
@@ -12,7 +13,11 @@ import it.unibo.ing.sigar.restful.model.SigarMeteredDataFormat._
 
 class MainServlet extends SigarrestfulinterfaceStack {
 
-  get("/:from/:to") {
+  get("/avaiable") {
+    Ok(RecentBuffer.keys.map(_.getTime).mkString("[",",\n","]"))
+  }
+
+  get("/samples/:from/:to") {
     val from = params("from")
     val to = params("to")
     val startDate = new Date(from.toLong)
