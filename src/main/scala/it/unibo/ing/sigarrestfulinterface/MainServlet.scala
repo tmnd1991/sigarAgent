@@ -22,9 +22,6 @@ class MainServlet extends SigarrestfulinterfaceStack {
     val startDate = new Date(from.toLong)
     val endDate = new Date(to.toLong)
     val results = RecentBuffer.between(startDate,endDate)
-    if (results.isEmpty)
-      InternalServerError(JsObject("error"->JsString("cannot retrieve monit data")).compactPrint)
-    else
-      Ok(results.toJson.compactPrint)
+    Ok(results.toJson.compactPrint)
   }
 }
