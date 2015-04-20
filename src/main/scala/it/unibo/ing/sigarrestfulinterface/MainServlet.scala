@@ -4,7 +4,6 @@ import java.net.URLClassLoader
 import java.util.Date
 
 import it.unibo.ing.sigar.restful.model.SigarMeteredData
-import it.unibo.ing.smacs.monit.gatherer.RecentBuffer
 import org.scalatra._
 import scalate.ScalateSupport
 import spray.json._
