@@ -1,4 +1,4 @@
-name := "sigarrestfulinterface"
+name := "sigarAgent"
 
 scalaVersion := "2.11.4"
 

@@ -1,4 +1,4 @@
-# sigarrestfulinterface #
+# sigarAgent #
 
 ## Build & Run ##
 
